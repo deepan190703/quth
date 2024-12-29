@@ -70,4 +70,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
     }
+
+    // Show Password functionality
+    document.getElementById('togglePassword').addEventListener('click', function (e) {
+        const passwordInput = document.getElementById('floatingPassword');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+    });
+
+    // reCAPTCHA functionality
+    const recaptchaCallback = function() {
+        console.log("reCAPTCHA loaded");
+    };
+
+    // Keep me signed in functionality
+    document.getElementById('rememberMe').addEventListener('change', function (e) {
+        if (this.checked) {
+            console.log("Keep me signed in checked");
+        } else {
+            console.log("Keep me signed in unchecked");
+        }
+    });
 });
