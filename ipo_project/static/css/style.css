@@ -7,6 +7,7 @@
     --background-light: #f8f9fa;
     --text-dark: #333;
     --transition-speed: 0.3s;
+    --purple-color: #6a1b9a;
 }
 
 /* Sidebar Styles */
@@ -202,4 +203,104 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Login Page Styles */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-light);
+}
+
+.login-logo {
+    max-height: 100px;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-form .form-floating {
+    position: relative;
+}
+
+.login-form .form-floating .fas {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.login-form .form-check-label {
+    color: var(--purple-color);
+}
+
+.login-form .btn-primary {
+    background-color: var(--purple-color);
+    border-color: var(--purple-color);
+}
+
+.login-form .btn-primary:hover {
+    background-color: darken(var(--purple-color), 10%);
+    border-color: darken(var(--purple-color), 10%);
+}
+
+.login-form .btn-outline-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form .btn-outline-secondary img {
+    max-height: 20px;
+    margin-right: 10px;
+}
+
+.login-form .g-recaptcha {
+    margin-bottom: 20px;
+}
+
+.login-form .text-center a {
+    color: var(--purple-color);
+}
+
+.login-form .text-center a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Page Styles */
+.dashboard-content {
+    padding: 20px;
+}
+
+.dashboard-content .card {
+    margin-bottom: 20px;
+}
+
+.dashboard-content .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+.dashboard-content .list-group-item {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-content .list-group-item i {
+    margin-right: 10px;
+}
+
+.dashboard-content .chart-container {
+    height: 300px;
 }

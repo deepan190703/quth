@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'ipo_portal',
     'social_django',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# drf-yasg configuration
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
+    'USE_SESSION_AUTH': False,
+    'JSON_EDITOR': True,
+    'DEFAULT_MODEL_RENDERING': 'example',
+}
+REDOC_SETTINGS = {
+    'LAZY_RENDERING': True,
+}
