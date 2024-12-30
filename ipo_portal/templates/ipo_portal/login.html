@@ -43,8 +43,10 @@
                 <span>or sign in with</span>
             </div>
             <button class="w-100 btn btn-lg btn-outline-secondary mb-3" type="button">
-                <img src="{% static 'images/google-logo.png' %}" alt="Google Logo" class="me-2" style="max-height: 20px;">
-                Continue with Google
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="w-100 btn btn-lg btn-outline-secondary mb-3">
+                    <img src="{% static 'images/google-logo.png' %}" alt="Google Logo" class="me-2" style="max-height: 20px;">
+                    Continue with Google
+                </a>
             </button>
             <div class="text-center">
                 <a href="{% url 'register' %}" class="text-decoration-none">Create an account</a>
