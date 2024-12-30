@@ -10,6 +10,8 @@ from .serializers import CompanySerializer
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
+from social_django.utils import load_strategy, load_backend
+from social_core.backends.google import GoogleOAuth2
 
 class CompanyViewSet(viewsets.ModelViewSet):
     queryset = Company.objects.all()
