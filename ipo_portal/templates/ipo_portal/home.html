@@ -20,6 +20,12 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h2 class="mb-0">Dashboard</h2>
                     <div class="d-flex align-items-center">
+                        <div class="input-group me-3">
+                            <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-secondary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                         <div class="dropdown me-3">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-bell"></i>
@@ -31,8 +37,19 @@
                                 <li><a class="dropdown-item" href="#">Allotment Status</a></li>
                             </ul>
                         </div>
-                        <div class="user-profile">
-                            <img src="{% static 'images/avatar.png' %}" alt="Profile" class="rounded-circle" width="40">
+                        <div class="user-profile d-flex align-items-center">
+                            <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 40px; height: 40px;">
+                                V
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Hi, Vishal
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

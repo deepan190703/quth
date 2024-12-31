@@ -92,4 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Keep me signed in unchecked");
         }
     });
+
+    // Dropdown menu functionality for user profile
+    const userDropdown = document.getElementById('userDropdown');
+    if (userDropdown) {
+        userDropdown.addEventListener('click', function (e) {
+            const dropdownMenu = this.nextElementSibling;
+            dropdownMenu.classList.toggle('show');
+        });
+    }
 });
