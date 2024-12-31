@@ -11,10 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
-import dotenv
-
-# Load environment variables from .env file
-dotenv.load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -71,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -117,8 +115,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_GOOGLE_OAUTH_KEY = os.getenv('GOOGLE_OAUTH_KEY')
-SOCIAL_AUTH_GOOGLE_OAUTH_SECRET = os.getenv('GOOGLE_OAUTH_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH_KEY = os.environ.get('GOOGLE_OAUTH_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH_SECRET = os.environ.get('GOOGLE_OAUTH_SECRET')
 
 # Define SOCIAL_AUTH_PIPELINE to customize the user creation/login process
 SOCIAL_AUTH_PIPELINE = (
