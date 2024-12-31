@@ -10,15 +10,18 @@ from .serializers import CompanySerializer
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
-from social_django.utils import load_strategy, load_backend
-from social_core.backends.google import GoogleOAuth2
 
-class CompanyViewSet(viewsets.ModelViewSet):
+class PublicCompanyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+class AdminCompanyViewSet(viewsets.ModelViewSet):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    permission_classes = [IsAuthenticated]
+
+    @action(detail=False, methods=['post'])
     def create_ipo(self, request):
         serializer = CompanySerializer(data=request.data)
         if serializer.is_valid():
@@ -26,7 +29,7 @@ class CompanyViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=True, methods=['put'], permission_classes=[IsAuthenticated])
+    @action(detail=True, methods=['put'])
     def update_ipo(self, request, pk=None):
         company = self.get_object()
         serializer = CompanySerializer(company, data=request.data)
@@ -35,11 +38,14 @@ class CompanyViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=True, methods=['delete'], permission_classes=[IsAuthenticated])
+    @action(detail=True, methods=['delete'])
     def delete_ipo(self, request, pk=None):
         company = self.get_object()
         company.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class CompanyViewSet(PublicCompanyViewSet, AdminCompanyViewSet):
+    pass
 
 def home(request):
     companies = Company.objects.all().order_by('-created_at')

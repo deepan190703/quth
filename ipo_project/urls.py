@@ -27,6 +27,12 @@ from drf_yasg import openapi
 router = DefaultRouter()
 router.register(r'companies', views.CompanyViewSet)
 
+public_router = DefaultRouter()
+public_router.register(r'public/companies', views.PublicCompanyViewSet)
+
+admin_router = DefaultRouter()
+admin_router.register(r'admin/companies', views.AdminCompanyViewSet)
+
 schema_view = get_schema_view(
    openapi.Info(
       title="IPO API",
@@ -44,6 +50,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('api/', include(router.urls)),
+    path('api/', include(public_router.urls)),
+    path('api/', include(admin_router.urls)),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
     path('register/', views.register, name='register'),
